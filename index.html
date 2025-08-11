@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎂 Happy Birthday! - Ultimate Celebration</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Particle Background -->
+    <div class="particles-container" id="particles"></div>
+    
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <h1 class="nav-logo">🎂 Birthday Celebration</h1>
+            <div class="nav-links">
+                <a href="#hero" class="nav-link">Home</a>
+                <a href="#cake" class="nav-link">Cake</a>
+                <a href="#gallery" class="nav-link">Memories</a>
+                <a href="#games" class="nav-link">Games</a>
+                <a href="#wishes" class="nav-link">Wishes</a>
+            </div>
+            <button class="theme-toggle" id="themeToggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero-section">
+        <div class="hero-content">
+            <h1 class="typewriter-text" id="typewriter">Happy Birthday! 🎉</h1>
+            <p class="hero-subtitle">Let's celebrate your special day!</p>
+            <div class="floating-balloons">
+                <div class="balloon balloon-1">🎈</div>
+                <div class="balloon balloon-2">🎈</div>
+                <div class="balloon balloon-3">🎈</div>
+                <div class="balloon balloon-4">🎈</div>
+                <div class="balloon balloon-5">🎈</div>
+            </div>
+            <button class="celebrate-btn" id="celebrateBtn">
+                <span>Start Celebration!</span>
+                <i class="fas fa-party-horn"></i>
+            </button>
+        </div>
+        <div class="hero-age-counter">
+            <div class="age-display">
+                <span class="age-number" id="ageNumber">25</span>
+                <span class="age-text">Years of Awesome!</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Cake Section -->
+    <section id="cake" class="cake-section">
+        <div class="container">
+            <h2 class="section-title">🍰 Make a Wish!</h2>
+            <div class="cake-container">
+                <div class="cake">
+                    <div class="cake-top">
+                        <div class="candle" data-candle="1"><div class="flame"></div></div>
+                        <div class="candle" data-candle="2"><div class="flame"></div></div>
+                        <div class="candle" data-candle="3"><div class="flame"></div></div>
+                        <div class="candle" data-candle="4"><div class="flame"></div></div>
+                        <div class="candle" data-candle="5"><div class="flame"></div></div>
+                    </div>
+                    <div class="cake-layer layer-1"></div>
+                    <div class="cake-layer layer-2"></div>
+                    <div class="cake-layer layer-3"></div>
+                </div>
+                <div class="cake-instructions">
+                    <p>Click candles to blow them out! 🕯️</p>
+                    <div class="candles-counter">
+                        <span id="candlesLeft">5</span> candles left
+                    </div>
+                </div>
+            </div>
+            <div class="wish-modal hidden" id="wishModal">
+                <div class="wish-content">
+                    <h3>🌟 Make Your Wish!</h3>
+                    <textarea placeholder="Type your birthday wish..."></textarea>
+                    <button class="wish-submit-btn">Submit Wish ✨</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Photo Gallery Section -->
+    <section id="gallery" class="gallery-section">
+        <div class="container">
+            <h2 class="section-title">📸 Memory Lane</h2>
+            <div class="gallery-controls">
+                <button class="gallery-btn" id="addPhotoBtn">
+                    <i class="fas fa-plus"></i> Add Memory
+                </button>
+                <button class="gallery-btn" id="slideshowBtn">
+                    <i class="fas fa-play"></i> Slideshow
+                </button>
+            </div>
+            <div class="photo-grid">
+                <div class="photo-card">
+                    <img src="https://images.unsplash.com/photo-1464207687429-7505649dae38?w=300&h=300&fit=crop" alt="Memory 1">
+                    <div class="photo-overlay">
+                        <p>Childhood Memories</p>
+                    </div>
+                </div>
+                <div class="photo-card">
+                    <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=300&h=300&fit=crop" alt="Memory 2">
+                    <div class="photo-overlay">
+                        <p>Fun Times</p>
+                    </div>
+                </div>
+                <div class="photo-card">
+                    <img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=300&h=300&fit=crop" alt="Memory 3">
+                    <div class="photo-overlay">
+                        <p>Special Moments</p>
+                    </div>
+                </div>
+                <div class="photo-card">
+                    <img src="https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=300&h=300&fit=crop" alt="Memory 4">
+                    <div class="photo-overlay">
+                        <p>Adventures</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Games Section -->
+    <section id="games" class="games-section">
+        <div class="container">
+            <h2 class="section-title">🎮 Birthday Games</h2>
+            <div class="games-grid">
+                <div class="game-card" id="balloonGame">
+                    <h3>🎈 Balloon Pop</h3>
+                    <div class="game-area">
+                        <div class="balloon-game">
+                            <div class="game-balloon" data-points="10">🎈</div>
+                            <div class="game-balloon" data-points="20">🎈</div>
+                            <div class="game-balloon" data-points="15">🎈</div>
+                            <div class="game-balloon" data-points="25">🎈</div>
+                        </div>
+                        <div class="score">Score: <span id="balloonScore">0</span></div>
+                    </div>
+                </div>
+                
+                <div class="game-card" id="triviaGame">
+                    <h3>🧠 Birthday Trivia</h3>
+                    <div class="trivia-question">
+                        <p>What's your favorite birthday memory?</p>
+                        <div class="trivia-options">
+                            <button class="trivia-btn">Childhood party</button>
+                            <button class="trivia-btn">Surprise celebration</button>
+                            <button class="trivia-btn">Family gathering</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Wishes Section -->
+    <section id="wishes" class="wishes-section">
+        <div class="container">
+            <h2 class="section-title">💌 Birthday Wishes</h2>
+            <div class="add-wish-form">
+                <input type="text" placeholder="Your name" id="wishName">
+                <textarea placeholder="Write your birthday wish..." id="wishMessage"></textarea>
+                <button class="add-wish-btn" id="addWishBtn">
+                    <i class="fas fa-heart"></i> Send Wish
+                </button>
+            </div>
+            <div class="wishes-grid">
+                <div class="wish-card">
+                    <div class="wish-author">Sarah ❤️</div>
+                    <div class="wish-content">"Hope your birthday is as amazing as you are! 🎉"</div>
+                    <div class="wish-likes">
+                        <button class="like-btn">👍 <span>12</span></button>
+                    </div>
+                </div>
+                <div class="wish-card">
+                    <div class="wish-author">Mike 🎈</div>
+                    <div class="wish-content">"Another year of being awesome! Celebrate big! 🎂"</div>
+                    <div class="wish-likes">
+                        <button class="like-btn">👍 <span>8</span></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fireworks Container -->
+    <div class="fireworks-container" id="fireworks"></div>
+    
+    <!-- Confetti Container -->
+    <div class="confetti-container" id="confetti"></div>
+
+    <!-- Audio Controls -->
+    <div class="audio-controls">
+        <button class="audio-btn" id="musicToggle">
+            <i class="fas fa-music"></i>
+        </button>
+        <button class="audio-btn" id="soundToggle">
+            <i class="fas fa-volume-up"></i>
+        </button>
+    </div>
+
+    <!-- Hidden Audio Elements -->
+    <audio id="birthdayMusic" loop>
+        <source src="birthday-song.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="candleSound">
+        <source src="candle-blow.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="popSound">
+        <source src="balloon-pop.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="script.js"></script>
+</body>
+</html>

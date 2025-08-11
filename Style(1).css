@@ -1,0 +1,911 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-pink: #ff6b9d;
+    --primary-purple: #a855f7;
+    --primary-cyan: #06b6d4;
+    --primary-gold: #fbbf24;
+    --text-dark: #1f2937;
+    --text-light: #f9fafb;
+    --bg-light: #ffffff;
+    --bg-dark: #111827;
+    --card-light: #f8fafc;
+    --card-dark: #1f2937;
+    --shadow-light: rgba(0, 0, 0, 0.1);
+    --shadow-dark: rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] {
+    --text-color: var(--text-light);
+    --bg-color: var(--bg-dark);
+    --card-color: var(--card-dark);
+    --shadow: var(--shadow-dark);
+}
+
+[data-theme="light"] {
+    --text-color: var(--text-dark);
+    --bg-color: var(--bg-light);
+    --card-color: var(--card-light);
+    --shadow: var(--shadow-light);
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background: var(--bg-color);
+    overflow-x: hidden;
+    transition: all 0.3s ease;
+}
+
+/* Particles Background */
+.particles-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: linear-gradient(135deg, 
+        var(--primary-pink) 0%, 
+        var(--primary-purple) 25%, 
+        var(--primary-cyan) 50%, 
+        var(--primary-gold) 75%, 
+        var(--primary-pink) 100%);
+    background-size: 400% 400%;
+    animation: gradientShift 10s ease infinite;
+}
+
+@keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+.particles-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, transparent 20%, rgba(255, 255, 255, 0.1) 50%);
+    animation: float 6s ease-in-out infinite;
+}
+
+/* Navigation */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    z-index: 1000;
+    padding: 1rem 0;
+    transition: all 0.3s ease;
+}
+
+[data-theme="dark"] .navbar {
+    background: rgba(17, 24, 39, 0.95);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-logo {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.8rem;
+    font-weight: 700;
+    background: linear-gradient(45deg, var(--primary-pink), var(--primary-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(45deg, var(--primary-pink), var(--primary-purple));
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.theme-toggle {
+    background: none;
+    border: 2px solid var(--primary-purple);
+    color: var(--primary-purple);
+    padding: 0.5rem;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+    background: var(--primary-purple);
+    color: white;
+    transform: rotate(180deg);
+}
+
+/* Hero Section */
+.hero-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+    position: relative;
+}
+
+.hero-content {
+    max-width: 800px;
+    z-index: 2;
+}
+
+.typewriter-text {
+    font-family: 'Dancing Script', cursive;
+    font-size: 4rem;
+    font-weight: 700;
+    background: linear-gradient(45deg, 
+        var(--primary-pink), 
+        var(--primary-purple), 
+        var(--primary-cyan), 
+        var(--primary-gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1rem;
+    animation: typewriter 3s steps(20) forwards, glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes typewriter {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 20px rgba(255, 107, 157, 0.5); }
+    to { text-shadow: 0 0 30px rgba(168, 85, 247, 0.8); }
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeInUp 1s ease 1s forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Floating Balloons */
+.floating-balloons {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.balloon {
+    position: absolute;
+    font-size: 3rem;
+    animation: float 6s ease-in-out infinite;
+    cursor: pointer;
+    pointer-events: auto;
+    transition: transform 0.3s ease;
+}
+
+.balloon:hover {
+    transform: scale(1.2) rotate(10deg);
+}
+
+.balloon-1 { top: 10%; left: 10%; animation-delay: 0s; }
+.balloon-2 { top: 20%; right: 15%; animation-delay: 1s; }
+.balloon-3 { bottom: 30%; left: 20%; animation-delay: 2s; }
+.balloon-4 { top: 60%; right: 10%; animation-delay: 3s; }
+.balloon-5 { bottom: 10%; right: 30%; animation-delay: 4s; }
+
+@keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(5deg); }
+}
+
+/* Celebrate Button */
+.celebrate-btn {
+    background: linear-gradient(45deg, var(--primary-pink), var(--primary-purple));
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 2rem auto;
+    transition: all 0.3s ease;
+    opacity: 0;
+    animation: fadeInUp 1s ease 2s forwards;
+}
+
+.celebrate-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(255, 107, 157, 0.4);
+}
+
+.celebrate-btn:active {
+    transform: translateY(0);
+}
+
+/* Age Counter */
+.hero-age-counter {
+    position: absolute;
+    top: 20%;
+    right: 10%;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    padding: 2rem;
+    border-radius: 20px;
+    text-align: center;
+    animation: fadeInRight 1s ease 1.5s forwards;
+    opacity: 0;
+}
+
+.age-number {
+    font-size: 4rem;
+    font-weight: 700;
+    background: linear-gradient(45deg, var(--primary-gold), var(--primary-cyan));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.age-text {
+    font-size: 1rem;
+    color: var(--text-color);
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Cake Section */
+.cake-section {
+    padding: 5rem 2rem;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    background: linear-gradient(45deg, var(--primary-pink), var(--primary-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.cake-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.cake {
+    position: relative;
+    width: 300px;
+    height: 200px;
+}
+
+.cake-layer {
+    position: absolute;
+    border-radius: 50%;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.layer-1 {
+    width: 280px;
+    height: 60px;
+    bottom: 0;
+    left: 10px;
+    background: linear-gradient(to bottom, #8b4513, #654321);
+}
+
+.layer-2 {
+    width: 220px;
+    height: 50px;
+    bottom: 40px;
+    left: 40px;
+    background: linear-gradient(to bottom, #ff69b4, #ff1493);
+}
+
+.layer-3 {
+    width: 160px;
+    height: 40px;
+    bottom: 70px;
+    left: 70px;
+    background: linear-gradient(to bottom, #ffd700, #ffa500);
+}
+
+.cake-top {
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+}
+
+.candle {
+    width: 8px;
+    height: 40px;
+    background: #ffd700;
+    border-radius: 4px 4px 0 0;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.candle:hover {
+    transform: scale(1.1);
+}
+
+.flame {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 15px;
+    background: radial-gradient(circle, #ffa500 0%, #ff4500 70%);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    animation: flicker 0.5s ease-in-out infinite alternate;
+}
+
+@keyframes flicker {
+    0% { transform: translateX(-50%) rotate(-1deg) scale(1); }
+    100% { transform: translateX(-50%) rotate(1deg) scale(1.05); }
+}
+
+.candle.blown-out .flame {
+    opacity: 0;
+    transform: translateX(-50%) scale(0);
+}
+
+.cake-instructions {
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--text-color);
+}
+
+.candles-counter {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--primary-gold);
+    margin-top: 1rem;
+}
+
+/* Wish Modal */
+.wish-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.wish-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.wish-content {
+    background: var(--card-color);
+    padding: 3rem;
+    border-radius: 20px;
+    text-align: center;
+    max-width: 500px;
+    width: 90%;
+    transform: scale(0.7);
+    transition: transform 0.3s ease;
+}
+
+.wish-modal.active .wish-content {
+    transform: scale(1);
+}
+
+.wish-content h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--primary-purple);
+}
+
+.wish-content textarea {
+    width: 100%;
+    height: 120px;
+    padding: 1rem;
+    border: 2px solid var(--primary-pink);
+    border-radius: 10px;
+    font-family: inherit;
+    resize: vertical;
+    margin-bottom: 1rem;
+}
+
+.wish-submit-btn {
+    background: linear-gradient(45deg, var(--primary-pink), var(--primary-purple));
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    color: white;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.wish-submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 107, 157, 0.4);
+}
+
+/* Gallery Section */
+.gallery-section {
+    padding: 5rem 2rem;
+}
+
+.gallery-controls {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+}
+
+.gallery-btn {
+    background: linear-gradient(45deg, var(--primary-cyan), var(--primary-purple));
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.gallery-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(6, 182, 212, 0.4);
+}
+
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.photo-card {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px var(--shadow);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.photo-card:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 20px 40px var(--shadow);
+}
+
+.photo-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    transition: all 0.3s ease;
+}
+
+.photo-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+    color: white;
+    padding: 1rem;
+    transform: translateY(100%);
+    transition: all 0.3s ease;
+}
+
+.photo-card:hover .photo-overlay {
+    transform: translateY(0);
+}
+
+/* Games Section */
+.games-section {
+    padding: 5rem 2rem;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+}
+
+.games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.game-card {
+    background: var(--card-color);
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px var(--shadow);
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.game-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px var(--shadow);
+}
+
+.game-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--primary-purple);
+}
+
+.balloon-game {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.game-balloon {
+    font-size: 2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    user-select: none;
+}
+
+.game-balloon:hover {
+    transform: scale(1.2);
+}
+
+.score {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--primary-gold);
+}
+
+.trivia-question p {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+.trivia-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.trivia-btn {
+    background: var(--primary-cyan);
+    border: none;
+    padding: 0.8rem;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.trivia-btn:hover {
+    background: var(--primary-purple);
+    transform: translateX(5px);
+}
+
+/* Wishes Section */
+.wishes-section {
+    padding: 5rem 2rem;
+}
+
+.add-wish-form {
+    background: var(--card-color);
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px var(--shadow);
+    margin-bottom: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.add-wish-form input,
+.add-wish-form textarea {
+    padding: 1rem;
+    border: 2px solid var(--primary-pink);
+    border-radius: 10px;
+    font-family: inherit;
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-color);
+}
+
+.add-wish-btn {
+    background: linear-gradient(45deg, var(--primary-pink), var(--primary-purple));
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    align-self: flex-start;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.add-wish-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 107, 157, 0.4);
+}
+
+.wishes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.wish-card {
+    background: var(--card-color);
+    padding: 1.5rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px var(--shadow);
+    transition: all 0.3s ease;
+}
+
+.wish-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px var(--shadow);
+}
+
+.wish-author {
+    font-weight: 600;
+    color: var(--primary-purple);
+    margin-bottom: 0.5rem;
+}
+
+.wish-content {
+    font-style: italic;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.like-btn {
+    background: none;
+    border: 1px solid var(--primary-pink);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    color: var(--primary-pink);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.like-btn:hover {
+    background: var(--primary-pink);
+    color: white;
+}
+
+/* Audio Controls */
+.audio-controls {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    display: flex;
+    gap: 1rem;
+    z-index: 1000;
+}
+
+.audio-btn {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(20px);
+    border: none;
+    padding: 1rem;
+    border-radius: 50%;
+    color: var(--text-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.audio-btn:hover {
+    background: var(--primary-purple);
+    color: white;
+    transform: scale(1.1);
+}
+
+/* Fireworks and Confetti */
+.fireworks-container,
+.confetti-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+/* Utility Classes */
+.hidden {
+    display: none !important;
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.scale-in {
+    animation: scaleIn 0.3s ease forwards;
+}
+
+@keyframes scaleIn {
+    from { transform: scale(0); }
+    to { transform: scale(1); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+    
+    .typewriter-text {
+        font-size: 2.5rem;
+    }
+    
+    .hero-age-counter {
+        position: static;
+        margin-top: 2rem;
+    }
+    
+    .games-grid,
+    .photo-grid,
+    .wishes-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .cake {
+        width: 250px;
+        height: 170px;
+    }
+    
+    .add-wish-form {
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 1rem;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .hero-content {
+        padding: 1rem;
+    }
+    
+    .typewriter-text {
+        font-size: 2rem;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .navbar,
+    .audio-controls,
+    .fireworks-container,
+    .confetti-container {
+        display: none;
+    }
+    
+    body {
+        background: white;
+        color: black;
+    }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+    :root {
+        --primary-pink: #d1477a;
+        --primary-purple: #8b5cf6;
+        --primary-cyan: #0891b2;
+        --primary-gold: #d97706;
+    }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
